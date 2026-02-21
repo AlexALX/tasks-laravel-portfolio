@@ -1,0 +1,23 @@
+stages:
+  - test
+
+test:
+  when: manual
+  image: php:8.4     
+  variables:
+    APP_ENV: testing
+  before_script:
+    # this fixes tests warning, instead of variables
+    - echo "APP_ENV=testing" > .env.testing
+    - echo "APP_KEY=base64:yrOvnIcpbFEe3+9gPabpJlhyOJtKMN2Wjgy8YwHypyI=" >> .env.testing
+    - echo "DB_CONNECTION=sqlite" >> .env.testing
+    - echo "DB_DATABASE=:memory:" >> .env.testing
+    # init project
+    - apt-get update && apt-get install -y unzip git curl npm
+    - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    - composer install
+    - npm install
+    - npm run build
+  script:
+    - php artisan migrate
+    - php artisan test
