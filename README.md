@@ -151,5 +151,6 @@ This is a known limitation of WSL2 and affects projects with many files.
 - Uses artisan serve
 - No bind mount for application code
 - Significantly faster file I/O on WSL2
+- Uses `php artisan serve` for fast local demo (not intended for production use).
 
 If you are developing on Windows with WSL2, the self-contained mode is recommended for better performance.
