@@ -37,5 +37,7 @@ jobs:
           npm run build
 
       - run: |
-          php artisan migrate --env=testing
-          php artisan test --env=testing
+          php artisan migrate
+          php artisan test
+        env:
+          APP_ENV: testing
