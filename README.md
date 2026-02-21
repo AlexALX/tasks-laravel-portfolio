@@ -1,4 +1,4 @@
-# Simple Task Management System
+# Simple Task Management System ![CI](https://github.com/AlexALX/tasks-laravel-portfolio/actions/workflows/laravel-test.yml/badge.svg)
 
 A real-time task management application built with Laravel and Livewire,
 showcasing production-oriented architecture, containerized development,
