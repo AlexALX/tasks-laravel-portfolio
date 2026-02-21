@@ -1,0 +1,41 @@
+name: Laravel Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v3
+        with:
+          php-version: 8.4
+          extensions: mbstring, bcmath, sqlite
+          ini-values: post_max_size=256M, memory_limit=2G
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - run: |
+          echo "APP_ENV=testing" > .env.testing
+          echo "APP_KEY=base64:yrOvnIcpbFEe3+9gPabpJlhyOJtKMN2Wjgy8YwHypyI=" >> .env.testing
+          echo "DB_CONNECTION=sqlite" >> .env.testing
+          echo "DB_DATABASE=:memory:" >> .env.testing
+
+      - run: composer install --no-interaction --prefer-dist
+
+      - run: |
+          npm install
+          npm run build
+
+      - run: |
+          php artisan migrate
+          php artisan test
