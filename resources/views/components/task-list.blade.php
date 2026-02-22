@@ -39,7 +39,7 @@ new class extends Component {
             </div>
             <div class="text-gray-400 text-sm">{{ $task->description }}</div>
             <div class="text-red-400 absolute right-0 top-1/2 -translate-y-1/2 cursor-pointer"
-                 @click="deleteConfirm = taskId" x-data="{ taskId: {{$task->id}} }">X
+                 @click="deleteConfirm = {{$task->id}}">X
             </div>
         </div>
     @endforeach
