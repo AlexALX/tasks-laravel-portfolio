@@ -44,10 +44,7 @@ new class extends Component {
     }
 
     public function clearForm() {
-        $this->title = '';
-        $this->description = '';
-        $this->taskId = 0;
-        $this->completed = false;
+        $this->reset();
     }
 };
 ?>
