@@ -60,7 +60,7 @@ new class extends Component {
     {{ $tasks->links() }}
 
     @if (!$tasks->count())
-        <div wire:loading.class="opacity-50 pointer-events-none">
+        <div wire:loading.class="opacity-50 pointer-events-none"  @if ($search) class="mt-2" @endif>
             @if ($search)
                 No Tasks found.
             @else
