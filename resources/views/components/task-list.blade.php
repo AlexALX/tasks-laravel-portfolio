@@ -31,7 +31,7 @@ new class extends Component {
 
     @if (count($tasks) || $search)
         <div>
-            <input placeholder="Search Task" wire:model.live.debounce="search" class="w-full ring-2 ring-emerald-200 hover:ring-emerald-400 focus:ring-emerald-400 p-2 rounded outline-none">
+            <input placeholder="Search Task" wire:model.live.debounce.500ms="search" class="w-full ring-2 ring-emerald-200 hover:ring-emerald-400 focus:ring-emerald-400 p-2 rounded outline-none">
         </div>
     @endif
 
